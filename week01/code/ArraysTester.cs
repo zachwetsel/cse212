@@ -34,12 +34,19 @@ public static class ArraysTester {
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     private static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // 1. Make an array with size = 'length' to store the multiples
+        double[] multiples = new double[length];
 
-        return new double[0]; // replace this return statement with your own
+        // 2. Loop through starting at 0 and going until 'length' - 1
+        for (int i = 0; i < length; i++)
+        {
+            // 3. Calculate the multiples by multiplying the 'number' by i + 1
+            multiples[i] = number * (i + 1);
+        }
+
+        // 4. Return the array
+
+        return multiples; 
     }
     
     /// <summary>
@@ -52,10 +59,17 @@ public static class ArraysTester {
     /// </summary>
     private static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // 1. Calculate how many rotations are needed
+        amount = amount % data.Count;
+
+        // 2. Slice list to create two smaller lists
+        List<int> endSlice = data.GetRange(data.Count - amount, amount);
+        List<int> startSlice = data.GetRange(0, data.Count - amount);
+
+        // 3. Clear the original list and add the slices to it
+        data.Clear();
+        data.AddRange(endSlice);
+        data.AddRange(startSlice);
 
     }
 }
